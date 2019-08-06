@@ -1,6 +1,6 @@
 import Header from './Header';
 
-/*const layoutStyle = {
+const layoutStyle = {
   margin: 20,
   padding: 20,
   border: '1px solid #DDD'
@@ -13,7 +13,7 @@ const Layout = props => (
   </div>
 );
 
-export default Layout;*/
+export default Layout;
 
 //Method 1 - Layout as a Higher Order Component
 
@@ -36,7 +36,7 @@ export default withLayout;*/
 
 //Method 2 - Page content as a prop
 
-const layoutStyle = {
+/*const layoutStyle = {
   margin: 20,
   padding: 20,
   border: '1px solid #DDD'
@@ -49,4 +49,4 @@ const Layout = props => (
   </div>
 );
 
-export default Layout;
+export default Layout;*/
