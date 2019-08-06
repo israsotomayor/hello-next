@@ -1,10 +1,24 @@
-import Header from '../comps/Header';
+import Layout from '../components/MyLayout';
+import withLayout from '../components/MyLayout';
 
-const Index = () => (
-  <div>
-    <Header />
-    <p>Hello Next.js</p>
-  </div>
-);
+/*export default function Index() {
+  return (
+    <Layout>
+      <p>Hello Next.js</p>
+    </Layout>
+  );
+}*/
 
-export default Index;
+//Method 1
+
+//const Page = () => <p>Hello Next.js</p>;
+
+//export default withLayout(Page);
+
+//Method 2 - Page content as a prop
+
+const indexPageContent = <p>Hello Next.js</p>;
+
+export default function Index() {
+  return <Layout content={indexPageContent} />;
+}
