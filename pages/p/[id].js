@@ -1,8 +1,8 @@
-//import { useRouter } from 'next/router';
 import Layout from '../../components/MyLayout';
 import fetch from 'isomorphic-unfetch';
 
-const Post = props => (
+//const Post = ({ show: { name = "", summary = "", image = {}, ...rest } = {} }) => (
+const Post = props => (  
   <Layout> 
     <h1>{props.show.name}</h1>
     <p>{props.show.summary.replace(/<[/]?p>/g, '')}</p>
@@ -10,14 +10,18 @@ const Post = props => (
   </Layout>
 );
 
-Post.getInitialProps = async function(context) {
+Post.getInitialProps = async context => {
   const { id } = context.query;
-  const res = await fetch(`https://api.tvmaze.com/shows.${id}`)
-  const show = await res.json;
 
-  console.log(`Fetched show: ${show.name}`);
+  try {
+    const res = await fetch(`https://api.tvmaze.com/shows/${id}`)
+    const show = await res.json();
 
-  return { show };
+    console.log('SHOW', show)
+    return { show } 
+  } catch (error) {
+    return { show: {}, error }
+  }
 };
 
 export default Post;
